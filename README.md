@@ -327,7 +327,7 @@ The tests train their own small model on made-up data. They do not need `diabete
 
 ## My results
 
-# 1. Which three models did the trainer compare? Which was selected, by which metric, and with what score?
+### 1. Which three models did the trainer compare? Which was selected, by which metric, and with what score?
 
 The trainer compared three machine learning models:
 
@@ -341,7 +341,7 @@ The trainer compared three machine learning models:
 
 Logistic Regression was selected because it achieved the highest mean ROC-AUC score across 5-fold cross-validation.
 
-# 2. What were the precision, recall, F1 and ROC-AUC of the selected model on the test set?
+### 2. What were the precision, recall, F1 and ROC-AUC of the selected model on the test set?
 
 The selected Logistic Regression model achieved the following test-set metrics:
 
@@ -354,7 +354,7 @@ The selected Logistic Regression model achieved the following test-set metrics:
 
 The model achieved 70.78% test accuracy.
 
-# 3. What did `/predict` return for `valid.json` and `high_risk.json`? Which `model_version` was in the answer?
+### 3. What did `/predict` return for `valid.json` and `high_risk.json`? Which `model_version` was in the answer?
 
 Both prediction requests were executed successfully.
 
@@ -363,7 +363,7 @@ Both prediction requests were executed successfully.
 
 Both responses used model version `v1` (Logistic Regression).
 
-# 4. What happened for `bad_range.json`, `bad_types.json` and `missing_field.json`?
+### 4. What happened for `bad_range.json`, `bad_types.json` and `missing_field.json`?
 
 The API rejected invalid input requests with validation errors.
 
@@ -373,7 +373,7 @@ The API rejected invalid input requests with validation errors.
 
 The API handled these invalid requests without crashing.
 
-# 5. What changed after training again with `SELECTION_METRIC=recall`? What did `/model` show, and how did I go back to `v1`?
+### 5. What changed after training again with `SELECTION_METRIC=recall`? What did `/model` show, and how did I go back to `v1`?
 
 I retrained the models using:
 

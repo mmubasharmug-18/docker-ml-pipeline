@@ -1,0 +1,29 @@
+services:
+  trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile.train
+    image: diabetes-trainer
+    profiles: ["train"]
+    environment:
+      SELECTION_METRIC: ${SELECTION_METRIC:-roc_auc}
+    volumes:
+      - ./data:/data:ro
+      - models:/models
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: diabetes-api
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      MODEL_VERSION: ${MODEL_VERSION:-}
+    volumes:
+      - models:/models:ro
+
+volumes:
+  models:
+    name: diabetes-models

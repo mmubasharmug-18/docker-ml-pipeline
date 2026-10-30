@@ -1,0 +1,22 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    DATA_PATH=/data/diabetes.csv \
+    MODEL_DIR=/models \
+    SELECTION_METRIC=roc_auc
+
+WORKDIR /app
+
+COPY requirements-ml.txt ./
+RUN pip install --no-cache-dir -r requirements-ml.txt
+
+RUN useradd --create-home appuser \
+    && mkdir /data /models \
+    && chown appuser:appuser /models
+
+COPY training/ ./training/
+
+USER appuser
+
+CMD ["python", "-m", "training"]

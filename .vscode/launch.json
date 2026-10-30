@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Train models",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "training",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run API",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "serving",
+      "console": "integratedTerminal",
+      "env": { "LOG_LEVEL": "DEBUG" }
+    }
+  ]
+}
